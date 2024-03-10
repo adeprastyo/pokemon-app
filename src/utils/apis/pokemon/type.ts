@@ -4,6 +4,7 @@ export interface IPokemon {
 }
 
 export interface IPokemonDetail {
+  id: number;
   abilities: [
     {
       ability: {};
