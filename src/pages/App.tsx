@@ -9,11 +9,13 @@ import PokemonCard from "../components/pokemon-card";
 
 function App() {
   // const [pokemons, setPokemons] = useState<IPokemonDetail[]>([]);
-  const { pokemons, setPokemons } = usePokemons();
+  const { pokemons, setPokemons, isLoading, setIsLoading } = usePokemons();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsLoading(true);
+
         const resultPokemons = await getPokemons();
 
         const resultDetails = resultPokemons.results.map((pokemon) =>
@@ -24,6 +26,8 @@ function App() {
         setPokemons(details);
       } catch (error) {
         console.log((error as Error).message.toString());
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -32,15 +36,19 @@ function App() {
 
   return (
     <Layout>
-      {pokemons.map((pokemon) => (
-        <Link key={pokemon.id} to={`pokemon/${pokemon.name}`}>
-          <PokemonCard
-            id={pokemon.id}
-            img={pokemon.sprites.other.dream_world.front_default}
-            name={pokemon.name}
-          />
-        </Link>
-      ))}
+      {isLoading ? (
+        <p>loading</p>
+      ) : (
+        pokemons.map((pokemon) => (
+          <Link key={pokemon.id} to={`pokemon/${pokemon.name}`}>
+            <PokemonCard
+              id={pokemon.id}
+              img={pokemon.sprites.other.dream_world.front_default}
+              name={pokemon.name}
+            />
+          </Link>
+        ))
+      )}
     </Layout>
   );
 }
