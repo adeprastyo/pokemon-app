@@ -15,7 +15,12 @@ export const PokemonProvider = ({ children }: any) => {
 
   return (
     <PokemonContext.Provider
-      value={{ pokemons, setPokemons, isLoading, setIsLoading }}
+      value={{
+        pokemons,
+        setPokemons,
+        isLoading,
+        setIsLoading,
+      }}
     >
       {children}
     </PokemonContext.Provider>
