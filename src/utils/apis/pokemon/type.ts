@@ -7,7 +7,9 @@ export interface IPokemonDetail {
   id: number;
   abilities: [
     {
-      ability: {};
+      ability: {
+        name: string;
+      };
       is_hidden: boolean;
       Slot: number;
     }
@@ -22,4 +24,5 @@ export interface IPokemonDetail {
   types: [{ slot: number; type: { name: string; url: string } }];
   height: number;
   weight: number;
+  moves: [{ move: { name: string } }];
 }
