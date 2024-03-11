@@ -37,17 +37,19 @@ function App() {
   return (
     <Layout>
       {isLoading ? (
-        <p>loading</p>
+        <p>Loading...</p>
       ) : (
-        pokemons.map((pokemon) => (
-          <Link key={pokemon.id} to={`pokemon/${pokemon.name}`}>
-            <PokemonCard
-              id={pokemon.id}
-              img={pokemon.sprites.other.dream_world.front_default}
-              name={pokemon.name}
-            />
-          </Link>
-        ))
+        <div className="overflow-auto h-dvh grid grid-cols-2 p-5 gap-5 bg-gray-800">
+          {pokemons.map((pokemon) => (
+            <Link key={pokemon.id} to={`pokemon/${pokemon.name}`}>
+              <PokemonCard
+                id={pokemon.id}
+                img={pokemon.sprites.other.dream_world.front_default}
+                name={pokemon.name}
+              />
+            </Link>
+          ))}
+        </div>
       )}
     </Layout>
   );

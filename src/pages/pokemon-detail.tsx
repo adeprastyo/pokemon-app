@@ -9,14 +9,25 @@ export default function PokemonDetail() {
 
   return (
     <Layout>
-      <div>
-        <img
-          src={selectedPokemon?.sprites.other.dream_world.front_default}
-          alt={selectedPokemon?.name}
-        />
-        <p>{selectedPokemon?.name}</p>
-        <p>{selectedPokemon?.height}</p>
-        <p>{selectedPokemon?.weight}</p>
+      <div className="bg-gray-800 h-dvh p-3">
+        <div className="flex gap-3">
+          <div className="border border-1 broder-white px-2 py-4 rounded-3xl">
+            <img
+              src={selectedPokemon?.sprites.other.dream_world.front_default}
+              alt={selectedPokemon?.name}
+            />
+            <div className="flex justify-center gap-3 mt-3">
+              {selectedPokemon?.types.map((type) => (
+                <p className="bg-gray-300 text-black uppercase font-semibold rounded-full px-2 py-1">
+                  {type.type.name}
+                </p>
+              ))}
+            </div>
+          </div>
+          <div className="border border-1 broder-white">
+            <p>stats</p>
+          </div>
+        </div>
       </div>
     </Layout>
   );
