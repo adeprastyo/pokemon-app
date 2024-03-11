@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
-import { IPokemonDetail } from "../utils/apis/pokemon/type";
-import { getPokemonDetails, getPokemons } from "../utils/apis/pokemon/api";
-import Layout from "../components/layout";
-import PokemonCard from "../components/pokemon-card";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import { getPokemonDetails, getPokemons } from "../utils/apis/pokemon/api";
+import { usePokemons } from "@/utils/contexts/pokemons";
+
+import Layout from "../components/layout";
+import PokemonCard from "../components/pokemon-card";
+
 function App() {
-  const [pokemons, setPokemons] = useState<IPokemonDetail[]>([]);
+  // const [pokemons, setPokemons] = useState<IPokemonDetail[]>([]);
+  const { pokemons, setPokemons } = usePokemons();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +33,7 @@ function App() {
   return (
     <Layout>
       {pokemons.map((pokemon) => (
-        <Link to={`pokemon/${pokemon.name}`}>
+        <Link key={pokemon.id} to={`pokemon/${pokemon.name}`}>
           <PokemonCard
             id={pokemon.id}
             img={pokemon.sprites.other.dream_world.front_default}
