@@ -12,14 +12,14 @@ export const getPokemons = async () => {
   }
 };
 
-export const getPokemonDetails = async (id: string) => {
-  try {
-    const response = await axiosWithConfig(`pokemon/${id}/`);
-    return response.data;
-  } catch (error: any) {
-    throw Error(error);
-  }
-};
+// export const getPokemonDetails = async (id: string) => {
+//   try {
+//     const response = await axiosWithConfig(`pokemon/${id}/`);
+//     return response.data;
+//   } catch (error: any) {
+//     throw Error(error);
+//   }
+// };
 
 export const getDetail = async (name: string) => {
   try {

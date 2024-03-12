@@ -1,13 +1,17 @@
 import Layout from "@/components/layout";
+import Modal from "@/components/modal";
 import { Button } from "@/components/ui/button";
 import { getDetail } from "@/utils/apis/pokemon/api";
 import { IPokemonDetail } from "@/utils/apis/pokemon/type";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function PokemonDetail() {
   const params = useParams();
   const [pokemon, setPokemon] = useState<IPokemonDetail>();
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [alias, setAlias] = useState<string>("");
+  const navigate = useNavigate();
 
   const fetchData = async () => {
     try {
@@ -21,6 +25,32 @@ export default function PokemonDetail() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleCatch = () => {
+    var halfChance = Math.random() * 100;
+    if (halfChance > 50) {
+      setShowModal(true);
+    } else {
+      alert("You missed!");
+    }
+  };
+
+  const handleSubmitPokemon = () => {
+    const getFromLocal = JSON.parse(localStorage.getItem("myPokemons") || "[]");
+    const findIfExist = getFromLocal.find(
+      (x: IPokemonDetail) => x.alias == alias
+    );
+
+    if (findIfExist) {
+      alert(`Alias ${alias} is already exist!`);
+    } else {
+      const dupe = Object.assign({}, pokemon);
+      dupe.alias = alias;
+      getFromLocal.push(dupe);
+      localStorage.setItem("myPokemons", JSON.stringify(getFromLocal));
+      navigate("/");
+    }
+  };
 
   return (
     <Layout>
@@ -76,9 +106,45 @@ export default function PokemonDetail() {
         </div>
 
         <div className="mx-auto">
-          <Button variant="secondary">Catch!</Button>
+          <Button
+            variant="secondary"
+            onClick={() => {
+              handleCatch();
+            }}
+          >
+            Catch!
+          </Button>
         </div>
       </div>
+
+      <Modal show={showModal}>
+        <div className="mb-5">
+          <p className="text-center font-arcade text-xs font-bold tracking-wide text-neutral-800 dark:text-white">
+            Congratulation!
+          </p>
+          <p className="text-center font-arcade text-xs font-bold tracking-wide text-neutral-800 dark:text-white">
+            You caught {pokemon?.name}
+          </p>
+        </div>
+        <div className="flex flex-col items-center">
+          <label className="block">
+            <span className="block font-arcade text-sm font-medium text-neutral-800 dark:text-white">
+              Nickname
+            </span>
+            <input
+              className="text-black block w-full rounded-md border border-slate-300 bg-white py-2 px-3 font-arcade text-xs shadow-sm placeholder:italic focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+              type="text"
+              onChange={(e) => setAlias(e.target.value)}
+            />
+          </label>
+          <button
+            className="mt-4 rounded-xl border p-3 text-center font-arcade text-xs tracking-wide text-neutral-800 dark:text-white"
+            onClick={() => handleSubmitPokemon()}
+          >
+            Submit
+          </button>
+        </div>
+      </Modal>
     </Layout>
   );
 }

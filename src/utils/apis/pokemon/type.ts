@@ -6,6 +6,7 @@ export interface IPokemon {
 export interface IPokemonDetail {
   id: number;
   name: string;
+  alias?: string;
   height: number;
   weight: number;
   moves: [{ move: { name: string } }];
