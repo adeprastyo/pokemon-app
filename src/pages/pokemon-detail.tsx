@@ -80,7 +80,7 @@ export default function PokemonDetail() {
                   ))}
                 </div>
               </div>
-              <div className="w-1/2 p-4 rounded-3xl border border-1 border-black dark:border-white shadow-lg shadow-black shadow-black">
+              <div className="w-1/2 p-4 rounded-3xl border border-1 border-black dark:border-white shadow-lg shadow-black ">
                 {pokemon?.stats.map((stat, i) => (
                   <p key={i}>
                     {stat.stat.name} : {stat.base_stat}
@@ -89,14 +89,14 @@ export default function PokemonDetail() {
               </div>
             </div>
 
-            <div className="rounded-3xl p-5 border border-1 border-black dark:border-white shadow-lg shadow-black shadow-black">
+            <div className="rounded-3xl p-5 border border-1 border-black dark:border-white shadow-lg shadow-black">
               <p className="capitalize">Name : {pokemon?.name}</p>
               <p className="capitalize">Weight : {pokemon?.weight}</p>
               <p className="capitalize">Height : {pokemon?.height}</p>
             </div>
 
             <div className="flex gap-3">
-              <div className="w-1/2 flex flex-col justify-center items-center px-2 py-4 rounded-3xl shadow-lg shadow-black shadow-black border border-1 border-black dark:border-white">
+              <div className="w-1/2 flex flex-col justify-center items-center px-2 py-4 rounded-3xl shadow-lg shadow-black border border-1 border-black dark:border-white">
                 {pokemon?.abilities.map((ability, i) =>
                   ability.is_hidden ? (
                     <p key={i}></p>
@@ -106,7 +106,7 @@ export default function PokemonDetail() {
                 )}
               </div>
 
-              <div className="w-1/2 flex flex-col justify-center items-center px-2 py-4 rounded-3xl shadow-lg shadow-black shadow-black border border-1 border-black dark:border-white">
+              <div className="w-1/2 flex flex-col justify-center items-center px-2 py-4 rounded-3xl shadow-lg shadow-black border border-1 border-black dark:border-white">
                 {pokemon?.moves.slice(0, 5).map((move, i) => (
                   <p key={i}>{move.move.name}</p>
                 ))}
@@ -148,7 +148,7 @@ export default function PokemonDetail() {
             />
           </label>
           <button
-            className="mt-4 rounded-xl border p-3 text-center font-arcade text-xs tracking-wide text-neutral-800 dark:text-white"
+            className="mt-4 rounded-xl border p-3 text-center font-arcade text-xs tracking-wide dark:text-black text-white bg-black dark:bg-white"
             onClick={() => handleSubmitPokemon()}
           >
             Submit
