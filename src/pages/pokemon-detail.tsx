@@ -62,9 +62,9 @@ export default function PokemonDetail() {
         </div>
       ) : (
         <>
-          <div className="overflow-auto h-dvh p-3 flex flex-col gap-4 bg-white dark:bg-gray-800">
+          <div className="overflow-auto h-dvh p-3 flex flex-col gap-4 bg-white dark:bg-gray-800 text-black dark:text-white">
             <div className="flex gap-3">
-              <div className="w-1/2 flex flex-col justify-center items-center border border-1 border-white px-2 py-4 rounded-3xl shadow-2xl">
+              <div className="w-1/2 flex flex-col justify-center items-center px-2 py-4 rounded-3xl shadow-lg shadow-black border border-1 border-black dark:border-white">
                 <img
                   src={pokemon?.sprites.other.dream_world.front_default}
                   alt={pokemon?.name}
@@ -80,7 +80,7 @@ export default function PokemonDetail() {
                   ))}
                 </div>
               </div>
-              <div className="w-1/2 border border-1 border-white p-4 rounded-3xl ">
+              <div className="w-1/2 p-4 rounded-3xl border border-1 border-black dark:border-white shadow-lg shadow-black shadow-black">
                 {pokemon?.stats.map((stat, i) => (
                   <p key={i}>
                     {stat.stat.name} : {stat.base_stat}
@@ -89,14 +89,14 @@ export default function PokemonDetail() {
               </div>
             </div>
 
-            <div className="border border-1 border-white rounded-3xl p-5">
+            <div className="rounded-3xl p-5 border border-1 border-black dark:border-white shadow-lg shadow-black shadow-black">
               <p className="capitalize">Name : {pokemon?.name}</p>
               <p className="capitalize">Weight : {pokemon?.weight}</p>
               <p className="capitalize">Height : {pokemon?.height}</p>
             </div>
 
             <div className="flex gap-3">
-              <div className="w-1/2 flex flex-col justify-center items-center border border-1 border-white px-2 py-4 rounded-3xl shadow-2xl">
+              <div className="w-1/2 flex flex-col justify-center items-center px-2 py-4 rounded-3xl shadow-lg shadow-black shadow-black border border-1 border-black dark:border-white">
                 {pokemon?.abilities.map((ability, i) =>
                   ability.is_hidden ? (
                     <p key={i}></p>
@@ -106,7 +106,7 @@ export default function PokemonDetail() {
                 )}
               </div>
 
-              <div className="w-1/2 flex flex-col justify-center items-center border border-1 border-white px-2 py-4 rounded-3xl shadow-2xl">
+              <div className="w-1/2 flex flex-col justify-center items-center px-2 py-4 rounded-3xl shadow-lg shadow-black shadow-black border border-1 border-black dark:border-white">
                 {pokemon?.moves.slice(0, 5).map((move, i) => (
                   <p key={i}>{move.move.name}</p>
                 ))}
@@ -115,10 +115,10 @@ export default function PokemonDetail() {
 
             <div className="mx-auto">
               <Button
-                variant="secondary"
                 onClick={() => {
                   handleCatch();
                 }}
+                className="dark:bg-white shadow-lg shadow-black"
               >
                 Catch!
               </Button>

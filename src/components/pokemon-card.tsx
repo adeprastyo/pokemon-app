@@ -10,7 +10,7 @@ function PokemonCard(props: Props) {
   let imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
 
   return (
-    <div className="flex h-full flex-col rounded-2xl border-4 border-white   shadow-lg shadow-black">
+    <div className="flex h-full flex-col rounded-2xl border-4 border-white shadow-lg shadow-black">
       <div className="flex h-full w-full items-center justify-center">
         <img className="h-auto w-auto p-3" src={imgUrl} alt={name} />
       </div>
