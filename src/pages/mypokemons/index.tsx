@@ -56,7 +56,7 @@ export default function MyPokemons() {
           ))}
         </div>
       ) : (
-        <div className="overflow-auto h-dvh flex justify-center items-center p-5 gap-5 bg-gray-800 dark:bg-white text-white dark:text-black">
+        <div className="overflow-auto h-dvh flex justify-center items-center p-5 gap-5 bg-white dark:bg-slate-800 text-black dark:text-white">
           <p>YOU HAVE NO POKEMON</p>
         </div>
       )}
