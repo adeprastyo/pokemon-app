@@ -1,8 +1,6 @@
 import pokeball from "@/assets/pokeball.png";
 import { useTheme } from "@/utils/contexts/pokemons";
 
-import { Moon, Sun } from "lucide-react";
-
 export default function Top() {
   const { theme, setTheme } = useTheme();
   console.log(theme);
@@ -19,7 +17,6 @@ export default function Top() {
       <div className="me-3">
         {theme === "dark" ? (
           <>
-            {/* <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 bg-white" /> */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -32,7 +29,6 @@ export default function Top() {
           </>
         ) : (
           <>
-            {/* <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 " /> */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
