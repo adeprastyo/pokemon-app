@@ -9,6 +9,7 @@ export interface IPokemonDetail {
   alias?: string;
   height: number;
   weight: number;
+  onClick?: () => void;
   moves: [{ move: { name: string } }];
   abilities: [
     {

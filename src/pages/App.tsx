@@ -10,11 +10,13 @@ import PokemonCard from "@/components/pokemon-card";
 
 function App() {
   const [pokemons, setPokemons] = useState<IPokemon[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const fetchPokemons = async () => {
     try {
       const result = await getPokemons();
       setPokemons(result.results);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -26,13 +28,21 @@ function App() {
 
   return (
     <Layout>
-      <div className="overflow-auto h-dvh grid grid-cols-2 p-5 gap-5 bg-gray-800">
-        {pokemons.map((pokemon, i) => (
-          <Link key={i} to={`pokemon/${pokemon.name}`}>
-            <PokemonCard url={pokemon.url} name={pokemon.name} />
-          </Link>
-        ))}
-      </div>
+      {isLoading ? (
+        <div className="overflow-auto h-dvh flex justify-center items-center p-5 gap-5 bg-gray-800 ">
+          <>Loading...</>
+        </div>
+      ) : (
+        <>
+          <div className="overflow-auto h-dvh grid grid-cols-2 p-5 gap-5 bg-gray-800">
+            {pokemons.map((pokemon, i) => (
+              <Link key={i} to={`pokemon/${pokemon.name}`}>
+                <PokemonCard url={pokemon.url} name={pokemon.name} />
+              </Link>
+            ))}
+          </div>
+        </>
+      )}
     </Layout>
   );
 }
