@@ -7,6 +7,7 @@ import Layout from "../components/layout";
 import { IPokemon } from "@/utils/apis/pokemon/type";
 import { Link } from "react-router-dom";
 import PokemonCard from "@/components/pokemon-card";
+import { ThemeProvider } from "@/utils/contexts/pokemons";
 
 function App() {
   const [pokemons, setPokemons] = useState<IPokemon[]>([]);
@@ -27,23 +28,25 @@ function App() {
   }, []);
 
   return (
-    <Layout>
-      {isLoading ? (
-        <div className="overflow-auto h-dvh flex justify-center items-center p-5 gap-5 bg-gray-800 ">
-          <>Loading...</>
-        </div>
-      ) : (
-        <>
-          <div className="overflow-auto h-dvh grid grid-cols-2 p-5 gap-5 bg-gray-800">
-            {pokemons.map((pokemon, i) => (
-              <Link key={i} to={`pokemon/${pokemon.name}`}>
-                <PokemonCard url={pokemon.url} name={pokemon.name} />
-              </Link>
-            ))}
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <Layout>
+        {isLoading ? (
+          <div className="overflow-auto h-dvh flex justify-center items-center p-5 gap-5">
+            <>Loading...</>
           </div>
-        </>
-      )}
-    </Layout>
+        ) : (
+          <>
+            <div className="overflow-auto h-dvh grid grid-cols-2 p-5 gap-5 bg-white dark:bg-slate-800">
+              {pokemons.map((pokemon, i) => (
+                <Link key={i} to={`pokemon/${pokemon.name}`}>
+                  <PokemonCard url={pokemon.url} name={pokemon.name} />
+                </Link>
+              ))}
+            </div>
+          </>
+        )}
+      </Layout>
+    </ThemeProvider>
   );
 }
 

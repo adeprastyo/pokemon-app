@@ -21,7 +21,7 @@ export default function MyPokemons() {
   return (
     <Layout>
       {pokemons.length > 0 ? (
-        <div className="overflow-auto h-dvh grid grid-cols-2 p-5 gap-5 bg-gray-800">
+        <div className="overflow-auto h-dvh grid grid-cols-2 p-5 gap-5 bg-white dark:bg-gray-800">
           {pokemons.map((pokemon) => (
             <div className="flex h-full flex-col rounded-2xl border-4 border-white   shadow-lg shadow-black">
               <div className="flex justify-end ">

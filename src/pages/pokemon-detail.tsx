@@ -57,14 +57,14 @@ export default function PokemonDetail() {
   return (
     <Layout>
       {isLoading ? (
-        <div className="overflow-auto h-dvh flex justify-center items-center p-5 gap-5 bg-gray-800 ">
+        <div className="overflow-auto h-dvh flex justify-center items-center p-5 gap-5 bg-white dark:bg-gray-800 ">
           <>Loading...</>
         </div>
       ) : (
         <>
-          <div className="overflow-auto bg-gray-800 h-dvh p-3 flex flex-col gap-4">
+          <div className="overflow-auto h-dvh p-3 flex flex-col gap-4 bg-white dark:bg-gray-800">
             <div className="flex gap-3">
-              <div className="w-1/2 flex flex-col justify-center items-center border border-1 broder-white px-2 py-4 rounded-3xl shadow-2xl">
+              <div className="w-1/2 flex flex-col justify-center items-center border border-1 border-white px-2 py-4 rounded-3xl shadow-2xl">
                 <img
                   src={pokemon?.sprites.other.dream_world.front_default}
                   alt={pokemon?.name}
@@ -80,7 +80,7 @@ export default function PokemonDetail() {
                   ))}
                 </div>
               </div>
-              <div className="w-1/2 border border-1  broder-white p-4 rounded-3xl ">
+              <div className="w-1/2 border border-1 border-white p-4 rounded-3xl ">
                 {pokemon?.stats.map((stat, i) => (
                   <p key={i}>
                     {stat.stat.name} : {stat.base_stat}
@@ -96,7 +96,7 @@ export default function PokemonDetail() {
             </div>
 
             <div className="flex gap-3">
-              <div className="w-1/2 flex flex-col justify-center items-center border border-1 broder-white px-2 py-4 rounded-3xl shadow-2xl">
+              <div className="w-1/2 flex flex-col justify-center items-center border border-1 border-white px-2 py-4 rounded-3xl shadow-2xl">
                 {pokemon?.abilities.map((ability, i) =>
                   ability.is_hidden ? (
                     <p key={i}></p>
@@ -106,7 +106,7 @@ export default function PokemonDetail() {
                 )}
               </div>
 
-              <div className="w-1/2 flex flex-col justify-center items-center border border-1 broder-white px-2 py-4 rounded-3xl shadow-2xl">
+              <div className="w-1/2 flex flex-col justify-center items-center border border-1 border-white px-2 py-4 rounded-3xl shadow-2xl">
                 {pokemon?.moves.slice(0, 5).map((move, i) => (
                   <p key={i}>{move.move.name}</p>
                 ))}
