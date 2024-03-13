@@ -26,7 +26,7 @@ export default function MyPokemons() {
             <div className="flex h-[315px] flex-col rounded-2xl border-4 border-white   shadow-lg shadow-black">
               <div className="flex justify-end">
                 <p
-                  className="h-8 w-5 justify-items-end text-white dark:text-white hover:text-red-500 cursor-pointer"
+                  className="h-8 w-5 justify-items-end text-black dark:text-white hover:text-red-500 cursor-pointer"
                   onClick={() => {
                     handleRemove(pokemon);
                   }}
