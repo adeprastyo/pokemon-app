@@ -13,6 +13,10 @@ https://pokemon-app-eight-cyan.vercel.app/
 - Show list of my pokemons that have been caught
 - Delete pokemon
 
+## API
+
+I use public API from https://pokeapi.co/
+
 ## Screenshot
 
 ![alt text](src/assets/image-1.png)
